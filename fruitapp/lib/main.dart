@@ -3,8 +3,10 @@ import 'api.dart';
 import 'dart:convert';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-import 'package:http/http.dart' as http;
 import 'homescreen.dart';
+import 'product_screen.dart';
+import 'list_items.dart';
+import 'show_image.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,6 +22,7 @@ class _MyAppState extends State<MyApp> {
   final ImagePicker _picker = ImagePicker();
   File file;
   bool pressed = false;
+  bool found = true;
   void PickImage()
   async{
     PickedFile pickedFile = await ImagePicker().getImage(source: ImageSource.gallery);
@@ -63,51 +66,10 @@ class _MyAppState extends State<MyApp> {
           ),
           body:pressed ? Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical:5.0),
-            child: ShowImage(file, context)):HomeScreen(),
+            child: ShowImage(file: file)
+            ):HomeScreen(),
                )
     );
   }
-
-}
-
-Widget ShowImage(file , BuildContext context){
-
-  return MaterialApp(
-    debugShowCheckedModeBanner: false,
-      home:Scaffold(
-        backgroundColor: Colors.white,
-        body: SingleChildScrollView(
-        child:Column(
-          children: [
-            SizedBox(height: 150,),
-            Image.file(file),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
-              child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      
-                      side:BorderSide(color: Colors.black,width: 2),
-                      shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0)
-                      
-                      ),
-                      padding: EdgeInsets.symmetric(horizontal: 25.0,vertical: 7.0),
-                      backgroundColor: Colors.black.withOpacity(0.1),
-                    ),
-                      child: Text(
-                        "Show Details",
-                        style: TextStyle(color: Colors.black, fontSize: 25.0),
-                      ),
-                      onPressed: () {
-                        ImageSender(file); 
-                      },
-                    ),
-            ),
-          ],
-        ),
-      
-      ),
-      )
-    );
 
 }

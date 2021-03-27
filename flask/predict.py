@@ -6,7 +6,7 @@ from cv2 import cv2
 
 def make_prediction(filename):
     uploads_dir = os.path.join(r'D:\D_Apps\Cheat_Meal\flask',filename)
-    model=k.models.load_model(r'model\CheetMealModel.h5')
+    model=k.models.load_model('CheetMealModel.h5')
     image = cv2.imread(uploads_dir)
 
     CATEGORIES = ['Apricot', 'Avocado','Banana', 'Blueberry', 'Cauliflower', 'Cocos', 'Eggplant', 'Hazelnut', 'Kiwi', 'Limes.' ]

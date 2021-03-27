@@ -6,6 +6,7 @@ import json
 app = Flask(__name__)
 
 uploads_dir = r'D:\D_Apps\Cheat_Meal\flask'
+answer = {'prediciton':'Cauliflower'}
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
@@ -13,11 +14,18 @@ def upload():
         profile = request.files['images']
         profile.save(os.path.join(uploads_dir, profile.filename))
         print("Image saved to the folder")
+        print("The filename is ",profile.filename)
         prediction = make_prediction(profile.filename)
-        answer = {'prediction' : prediction}
-        answer = json.dumps(answer)
-    return answer
+        answer['prediction'] = prediction
+        print("prediction made")
+    return "500"
+        
 
+@app.route('/find', methods=['GET'])
+def find():
+    print("getting request")
+    return jsonify(answer)
+    
 if __name__ == '__main__':
     app.run()
 

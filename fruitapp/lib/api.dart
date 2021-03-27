@@ -2,13 +2,6 @@ import 'package:http/http.dart' as http;
 import 'dart:io';
 import 'package:http_parser/http_parser.dart';
 
-Future Getdata(url) async {
-  print("Reached class");
-  http.Response Response = await http.get(Uri.http('10.0.2.2:5000','/api' , {'title':'hanhellothere'}));
-  print("Called request");
-  return Response.body;
-}
-
 
   ImageSender(file) async {
     print("ImageSender Called");
@@ -25,4 +18,8 @@ Future Getdata(url) async {
   http.StreamedResponse r = await request.send();
   print(r.statusCode);
   print("Image Sender Success");
+  http.Response Response = await http.get(Uri.http('10.0.2.2:5000','/find'));
+  print("Called request");
+  print("returning request");
+  return Response.body;
   }
