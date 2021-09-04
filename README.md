@@ -25,3 +25,7 @@ Dillinger uses a number of open source projects to work properly:
 - Flutter -  A Dart Framework to make android/ios apps
 - Flask - A Python web framework 
 - Tensorflow - A Machine Learning/ Deep Learning Library
+
+<br>
+<br>
+<h1 align = 'center'>Made with ❤️ by <a href = 'https://github.com/thechawla225'>Ankit Chawla</a></h1>
